@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microgram-fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microgram-fe
+  template:
+    metadata:
+      labels:
+        app: microgram-fe
+    spec:
+      containers:
+        - name: microgram-fe-app
+          image: olsfer/microgram-fe
+          imagePullPolicy: Always
+          ports:
+            - name: web
+              containerPort: 8080
+              protocol: TCP

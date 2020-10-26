@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: 'circleci/node:14.14.0'
+
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Build and push Docker image
+          command: |
+            docker build -t olsfer/microgram-fe .
+            docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+            docker push olsfer/microgram-fe
