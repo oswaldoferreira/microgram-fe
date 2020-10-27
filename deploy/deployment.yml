@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: microgram-fe-app
-          image: olsfer/microgram-fe
+          image: olsfer/microgram-fe:latest
           imagePullPolicy: Always
           ports:
             - name: web
