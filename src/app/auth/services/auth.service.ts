@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   register(user: User, password: string): Promise<any> {
-    return this.api.post('/users/auth/',
+    return this.api.post('/users/auth',
               {email: user.email, password: password})
               .then((res) => {
                 this.setTokenAndUser(res.token, res.user);
