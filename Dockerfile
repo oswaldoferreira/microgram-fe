@@ -17,6 +17,8 @@ COPY ./ /app/
 RUN ionic build --prod
 
 FROM nginx:alpine
+ARG mode
+RUN echo "Running nginx $mode"
 RUN rm -rf /usr/share/nginx/html/*
-COPY default.conf /etc/nginx/conf.d
+COPY "$mode.conf" /etc/nginx/conf.d/default.conf
 COPY --from=build /app/www/ /usr/share/nginx/html/
